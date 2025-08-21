@@ -6,9 +6,12 @@ var logger = require('morgan');
 
 const http = require("http")
 
+require('dotenv').config()
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+
+const {connectToMongoDb}=require('./config/db')
 
 var app = express();
 
@@ -43,4 +46,6 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 const server =http.createServer(app);
-server.listen(5000,()=>{console.log("app is running on port 5000")})
+server.listen(process.env.port,()=> {
+  connectToMongoDb();
+  console.log("app is running on port",process.env.port)})  
