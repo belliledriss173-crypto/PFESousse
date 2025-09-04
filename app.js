@@ -9,7 +9,16 @@ const http = require("http")
 require('dotenv').config()
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var usersRouter = require('./routes/UserRouter');
+//terrain
+var terrainRoutes = require('./routes/terrainRoutes');
+//player
+var playerRoutes = require('./routes/playerRoutes');
+var matchRoutes = require('./routes/matchRoutes');
+var reservationRoutes = require('./routes/reservationRoutes');
+
+
+
 
 const {connectToMongoDb}=require('./config/db')
 
@@ -27,6 +36,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/players', playerRoutes);
+app.use('/terrains', terrainRoutes);
+app.use('/matches', matchRoutes);
+app.use('/reservations', reservationRoutes);
+
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -41,11 +58,12 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.json('error');
+  res.json({ message: err.message, stack: err.stack });
 });
 
 module.exports = app;
 const server =http.createServer(app);
 server.listen(process.env.port,()=> {
   connectToMongoDb();
-  console.log("app is running on port",process.env.port)})  
+  console.log("app is running on port ",process.env.port)})  
+  
