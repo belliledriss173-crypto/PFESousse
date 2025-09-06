@@ -8,6 +8,8 @@ router.get('/getUserById/:id',UserController.getUserById);
 router.get('/getUserByAge/:age',UserController.getUserByAge);
 router.post('/addClient',UserController.addClient);
 router.delete('/deleteUserbyId/:id',UserController.deleteUserbyId);
+router.patch('/updateUserById/:id',UserController.updateUserById);
+
 //router.get('/addClientWithImage',uploadFile.single("user_Image"),UserController.addClientWithImage);
 
 module.exports =router;

@@ -90,3 +90,22 @@ userDate.user_image= filename
         res.status(500).json({ message: error.message });
     }
 }
+
+
+module.exports.updateUserById = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const updates = req.body; // les champs à mettre à jour
+
+        // { new: true } => renvoie l'utilisateur mis à jour
+        const updatedUser = await userModel.findByIdAndUpdate(id, updates, { new: true });
+
+        if (!updatedUser) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.status(200).json({ updatedUser });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};

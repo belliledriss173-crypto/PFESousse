@@ -9,7 +9,13 @@ const userSchema = new mongoose.Schema({
     age: Number,
     user_Image: { type: String, required: false },
     isActive: { type: Boolean, default: true },
-    isBanned: { type: Boolean, default: false }
+    isBanned: { type: Boolean, default: false },
+
+
+owners:{type : mongoose.Schema.Types.ObjectId,ref:'player'},//one
+//owners:{type : mongoose.Schema.Types.ObjectId,ref:'player'}//many
+
+
 }, { timestamps: true });
 
 const User = mongoose.model("User", userSchema);
