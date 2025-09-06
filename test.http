@@ -1,0 +1,180 @@
+########################################
+# USERS
+########################################
+
+### 1. Récupérer tous les users
+GET http://localhost:5000/users/getAllUsers
+
+### 2. Récupérer un user par ID
+GET http://localhost:5000/users/getUserById/ID_USER
+
+### 3. Récupérer user par age
+GET http://localhost:5000/users/getUserByAge/25
+
+### 4. Ajouter un client
+POST http://localhost:5000/users/addClient
+Content-Type: application/json
+
+{
+  "firstName": "Ali",
+  "lastName": "Ben",
+  "email": "ali@mail.com",
+  "age": 25,
+  "password": "123456789012"
+}
+
+### 5. Ajouter un client avec image
+POST http://localhost:5000/users/addClientWithImage
+Content-Type: multipart/form-data
+Content-Disposition: form-data; name="user_image"; filename="avatar.jpg"
+
+### 6. Mettre à jour un user
+PATCH http://localhost:5000/users/updateUser/ID_USER
+Content-Type: application/json
+
+{
+  "firstName": "Ahmed",
+  "age": 26
+}
+
+### 7. Supprimer un user
+DELETE http://localhost:5000/users/deleteUser/ID_USER
+
+
+########################################
+# PLAYERS
+########################################
+
+### 1. Ajouter un player simple
+POST http://localhost:5000/players/addPlayer
+Content-Type: application/json
+
+{
+  "userId": "ID_USER",
+  "niveau": "Débutant",
+  "positionPreferee": "Attaquant"
+}
+
+### 2. Ajouter un player avec owner
+POST http://localhost:5000/players/addPlayerWithOwner/ID_OWNER
+Content-Type: application/json
+
+{
+  "niveau": "Intermédiaire",
+  "positionPreferee": "Milieu"
+}
+
+### 3. Récupérer tous les players
+GET http://localhost:5000/players/getAllPlayers
+
+### 4. Récupérer un player par ID
+GET http://localhost:5000/players/getPlayerById/ID_PLAYER
+
+### 5. Mettre à jour un player
+PATCH http://localhost:5000/players/updatePlayer/ID_PLAYER
+Content-Type: application/json
+
+{
+  "niveau": "Avancé",
+  "positionPreferee": "Défenseur"
+}
+
+### 6. Supprimer un player
+DELETE http://localhost:5000/players/deletePlayer/ID_PLAYER
+
+
+########################################
+# TERRAINS
+########################################
+
+### 1. Ajouter un terrain
+POST http://localhost:5000/terrains/addTerrain
+Content-Type: application/json
+
+{
+  "nom": "Terrain Central",
+  "adresse": "Rue Principale",
+  "capacite": 20
+}
+
+### 2. Récupérer tous les terrains
+GET http://localhost:5000/terrains/getAllTerrains
+
+### 3. Récupérer un terrain par ID
+GET http://localhost:5000/terrains/getTerrainById/ID_TERRAIN
+
+### 4. Mettre à jour un terrain
+PATCH http://localhost:5000/terrains/updateTerrain/ID_TERRAIN
+Content-Type: application/json
+
+{
+  "capacite": 25
+}
+
+### 5. Supprimer un terrain
+DELETE http://localhost:5000/terrains/deleteTerrain/ID_TERRAIN
+
+
+########################################
+# MATCHS
+########################################
+
+### 1. Ajouter un match
+POST http://localhost:5000/matches/addMatch
+Content-Type: application/json
+
+{
+  "dateHeure": "2025-09-10T16:00:00",
+  "lieu": "Terrain Central",
+  "organisateurId": "ID_USER"
+}
+
+### 2. Récupérer tous les matchs
+GET http://localhost:5000/matches/getAllMatches
+
+### 3. Récupérer un match par ID
+GET http://localhost:5000/matches/getMatchById/ID_MATCH
+
+### 4. Mettre à jour un match
+PATCH http://localhost:5000/matches/updateMatch/ID_MATCH
+Content-Type: application/json
+
+{
+  "lieu": "Terrain Sud"
+}
+
+### 5. Supprimer un match
+DELETE http://localhost:5000/matches/deleteMatch/ID_MATCH
+
+
+########################################
+# RESERVATIONS
+########################################
+
+### 1. Ajouter une réservation
+POST http://localhost:5000/reservations/addReservation
+Content-Type: application/json
+
+{
+  "dateHeure": "2025-09-10T16:00:00",
+  "joueurId": "ID_PLAYER",
+  "terrainId": "ID_TERRAIN",
+  "matchId": "ID_MATCH"
+}
+
+### 2. Récupérer toutes les réservations
+GET http://localhost:5000/reservations/getAllReservations
+
+### 3. Récupérer une réservation par ID
+GET http://localhost:5000/reservations/getReservationById/ID_RESERVATION
+
+### 4. Mettre à jour une réservation
+PATCH http://localhost:5000/reservations/updateReservation/ID_RESERVATION
+Content-Type: application/json
+
+{
+  "dateHeure": "2025-09-10T18:00:00"
+}
+
+### 5. Supprimer une réservation
+DELETE http://localhost:5000/reservations/deleteReservation/ID_RESERVATION
