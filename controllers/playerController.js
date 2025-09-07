@@ -62,6 +62,7 @@ module.exports.addPlayerWithOwner = async (req, res) => {
         const addedPlayer = await player.save();
 
         await User.findByIdAndUpdate(idOwner, {
+            //$set :{player:addedPlayer._id}
             $push: { players: addedPlayer._id }
         });
 

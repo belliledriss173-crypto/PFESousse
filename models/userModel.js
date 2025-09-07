@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
     isBanned: { type: Boolean, default: false },
 
 
-owners:{type : mongoose.Schema.Types.ObjectId,ref:'player'},//one
+player:{type : mongoose.Schema.Types.ObjectId,ref:'player'},//one
 //owners:{type : mongoose.Schema.Types.ObjectId,ref:'player'}//many
 
 
